@@ -1,4 +1,6 @@
+import 'package:crud/gen/assets.gen.dart';
 import 'package:crud/src/models/base/api_request_status.dart';
+import 'package:crud/src/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ApiResponseHandlerWidget extends StatelessWidget {
@@ -61,12 +63,13 @@ class DefaultLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: 16,
-        width: 16,
-        margin: const EdgeInsets.all(16.0),
-        child: const Center(child: CircularProgressIndicator()),
+    return Expanded(
+      child: Center(
+        child: Image.asset(
+          Assets.images.loading.path,
+          color: AppColors.primaryMedium,
+          height: 32,
+        ),
       ),
     );
   }

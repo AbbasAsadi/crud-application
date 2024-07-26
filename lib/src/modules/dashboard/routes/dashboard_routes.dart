@@ -10,6 +10,13 @@ class DashboardRoutes {
     builder: (context, state) => const DashboardPage(),
   );
 
+  // static RouteBase pageRoute = StatefulShellRoute.indexedStack(
+  //     branches: [
+  //       StatefulShellBranch(
+  //
+  //           routes: routes),
+  //     ]
+  // );
   static toDashboardPage(BuildContext context) {
     context.go(mainPagePath);
   }

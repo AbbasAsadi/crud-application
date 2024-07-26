@@ -1,3 +1,4 @@
+import 'package:crud/src/modules/home/routes/home_routes.dart';
 import 'package:crud/src/modules/splash/routes/splash_routes.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,7 +11,8 @@ class AppRoutes {
 
   static final List<RouteBase> _routeList = [
     SplashRoutes.route,
-    // HomeRoutes.pageRoute,
+    // DashboardRoutes.pageRoute,
+    HomeRoutes.pageRoute,
     // ArticleRoutes.pageRoute,
   ];
 }
