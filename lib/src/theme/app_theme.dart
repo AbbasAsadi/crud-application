@@ -1,9 +1,54 @@
+import 'package:crud/gen/fonts.gen.dart';
+import 'package:crud/src/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 mixin AppTheme {
-  static ThemeData get mainTheme => ThemeData();
+  static ThemeData get mainTheme => ThemeData(
+    brightness: Brightness.dark,
+    colorSchemeSeed: AppColors.primaryMedium,
+    scaffoldBackgroundColor: AppColors.white,
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.white,
+      surfaceTintColor: Colors.transparent,
+      titleTextStyle: defaultTextTheme.headlineLarge,
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: AppColors.black,
+      ),
+    ),
+    textTheme: defaultTextTheme,
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: AppColors.primaryMedium,
+        ),
+      ),
+      enabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: AppColors.gray500,
+        ),
+      ),
+      disabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: AppColors.gray500,
+        ),
+      ),
+      focusedErrorBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: AppColors.secondaryMedium,
+        ),
+      ),
+      filled: false,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      labelStyle: defaultTextTheme.headlineMedium!.copyWith(color: AppColors.gray500),
+      errorStyle: defaultTextTheme.headlineMedium!.copyWith(color: AppColors.redError),
+      hintStyle: defaultTextTheme.bodyLarge!.copyWith(color: AppColors.gray400),
+    ),
 
-  static String fontFamily() => FontFamily.timeNewRoman;
+  );
+
+  static String fontFamily() => FontFamily.roboto;
 
   static const double fontHeightSpacing = 1.6;
 

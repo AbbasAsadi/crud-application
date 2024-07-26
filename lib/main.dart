@@ -1,3 +1,4 @@
+import 'package:crud/src/core/my_app.dart';
 import 'package:flutter/material.dart';
 
 void main() {

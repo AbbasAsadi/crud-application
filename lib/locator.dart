@@ -5,12 +5,12 @@ final locator = GetIt.instance;
 
 Future<void> initializeRepositories()async {
   if (appFlavor == 'mock') {
-    locator.registerLazySingleton<HomeSource>(() => HomeMockSource());
+    // locator.registerLazySingleton<HomeSource>(() => HomeMockSource());
   }else {
-    locator.registerLazySingleton<HomeSource>(() => HomeRemoteSource());
+    // locator.registerLazySingleton<HomeSource>(() => HomeRemoteSource());
   }
 
   /// Home Repository
-  locator.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(locator<HomeSource>()));
+  // locator.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(locator<HomeSource>()));
 
 }
