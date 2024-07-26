@@ -12,11 +12,17 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/reply.svg
+  String get reply => 'assets/icons/reply.svg';
+
   /// File path: assets/icons/search.svg
   String get search => 'assets/icons/search.svg';
 
+  /// File path: assets/icons/user-circle.svg
+  String get userCircle => 'assets/icons/user-circle.svg';
+
   /// List of all assets
-  List<String> get values => [search];
+  List<String> get values => [reply, search, userCircle];
 }
 
 class $AssetsImagesGen {

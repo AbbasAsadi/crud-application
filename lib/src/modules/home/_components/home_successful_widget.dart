@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class HomeSuccessfulWidget extends StatelessWidget {
-  const HomeSuccessfulWidget({super.key, this.data, required this.onRetryTapped});
+  const HomeSuccessfulWidget({super.key, this.data, required this.onRetryTapped, required this.onArticleTapped});
 
   final List<ArticleResponse>? data;
   final VoidCallback onRetryTapped;
+  final ValueSetter<ArticleResponse> onArticleTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,10 @@ class HomeSuccessfulWidget extends StatelessWidget {
           itemCount: data?.length ?? 0,
           separatorBuilder: (context, index) => const Gap(8),
           itemBuilder: (context, index) {
-            return ArticleListTile(item: data![index]);
+            return ArticleListTile(
+              item: data![index],
+              onTap: onArticleTapped,
+            );
           },
         ),
       );

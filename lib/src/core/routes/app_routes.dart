@@ -13,6 +13,5 @@ class AppRoutes {
     SplashRoutes.route,
     // DashboardRoutes.pageRoute,
     HomeRoutes.pageRoute,
-    // ArticleRoutes.pageRoute,
   ];
 }

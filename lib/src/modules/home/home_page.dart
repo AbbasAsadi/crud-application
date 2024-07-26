@@ -61,11 +61,13 @@ class _HomePage extends StatelessWidget {
                   customSuccessWidget: HomeSuccessfulWidget(
                     data: staticProvider.homeResponse.data,
                     onRetryTapped: staticProvider.initialize,
+                    onArticleTapped: staticProvider.onArticleTapped,
                   ),
                   onRetryTapped: staticProvider.initialize,
                 );
               },
-            )
+            ),
+            const Gap(32),
           ],
         ),
       ),

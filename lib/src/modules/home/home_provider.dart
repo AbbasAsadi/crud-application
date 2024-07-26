@@ -2,6 +2,7 @@ import 'package:crud/locator.dart';
 import 'package:crud/src/core/api/api_service.dart';
 import 'package:crud/src/core/provider/safe_provider.dart';
 import 'package:crud/src/models/base/api_response_wrapper.dart';
+import 'package:crud/src/modules/article_detail/_routes/article_routes.dart';
 import 'package:crud/src/modules/home/_model/entity/article_response.dart';
 import 'package:crud/src/modules/home/_model/repository/home_repository.dart';
 
@@ -25,5 +26,9 @@ class HomeProvider extends SafeProvider {
       _repository.fetchHomePageData(),
     );
     notifyListeners();
+  }
+
+  void onArticleTapped(ArticleResponse article) {
+    ArticleRoutes.toArticlePage(context, article);
   }
 }
