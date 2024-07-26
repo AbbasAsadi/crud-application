@@ -1,4 +1,5 @@
 import 'package:crud/gen/assets.gen.dart';
+import 'package:crud/src/helper/context_extensions.dart';
 import 'package:crud/src/modules/splash/routes/splash_provider.dart';
 import 'package:crud/src/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -23,24 +24,28 @@ class _SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var staticProvider = context.read<SplashProvider>();
+
     return Scaffold(
-      body: Padding(
+      backgroundColor: AppColors.primaryMedium,
+      body: Container(
+        width: context.width,
         padding: const EdgeInsets.all(24.0),
+        alignment: Alignment.center,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Spacer(),
             Image.asset(
               Assets.images.logo.path,
+              height: 64,
               fit: BoxFit.contain,
-
             ),
-            const Gap(32),
+            const Spacer(),
             Image.asset(
               Assets.images.loading.path,
-              height: 40,
-              color: AppColors.primaryMedium,
+              height: 32,
             ),
+            const Gap(32),
           ],
         ),
       ),

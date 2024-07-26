@@ -15,8 +15,8 @@ class $AssetsImagesGen {
   /// File path: assets/images/loading.gif
   AssetGenImage get loading => const AssetGenImage('assets/images/loading.gif');
 
-  /// File path: assets/images/logo.webp
-  AssetGenImage get logo => const AssetGenImage('assets/images/logo.webp');
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [loading, logo];
