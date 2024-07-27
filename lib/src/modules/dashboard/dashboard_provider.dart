@@ -11,4 +11,14 @@ class DashboardProvider extends SafeProvider {
     notifyListeners();
   }
 
+  void onRemoveTapped(ArticleResponse value) {
+    yourArticles.remove(value);
+    notifyListeners();
+  }
+
+  void onEditTapped(ArticleResponse newValue, int index) {
+    yourArticles[index] = newValue;
+    notifyListeners();
+  }
+
 }
