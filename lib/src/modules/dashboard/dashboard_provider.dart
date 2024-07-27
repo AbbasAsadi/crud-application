@@ -17,8 +17,14 @@ class DashboardProvider extends SafeProvider {
   }
 
   void onEditTapped(ArticleResponse newValue, int index) {
-    yourArticles[index] = newValue;
+    yourArticles.removeAt(index);
     notifyListeners();
+    Future.delayed(
+      const Duration(seconds: 1),
+      () {
+        yourArticles.insert(index, newValue);
+        notifyListeners();
+      },
+    );
   }
-
 }

@@ -1,36 +1,39 @@
 import 'package:crud/src/helper/context_extensions.dart';
 import 'package:crud/src/helper/form_validator.dart';
-import 'package:crud/src/modules/write_article/write_article_provider.dart';
+import 'package:crud/src/modules/home/_model/entity/article_response.dart';
+import 'package:crud/src/modules/manage_article/edit_article/edit_article_provider.dart';
 import 'package:crud/src/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
-class WriteArticlePage extends StatelessWidget {
-  const WriteArticlePage({super.key});
+class EditArticlePage extends StatelessWidget {
+  const EditArticlePage({super.key, required this.inputValue});
+
+  final (ArticleResponse, int) inputValue;
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => WriteArticleProvider(context),
-      child: const _WriteArticlePage(),
+      create: (_) => EditArticleProvider(context, inputValue),
+      child: const _EditArticlePage(),
     );
   }
 }
 
-class _WriteArticlePage extends StatelessWidget {
-  const _WriteArticlePage();
+class _EditArticlePage extends StatelessWidget {
+  const _EditArticlePage();
 
   @override
   Widget build(BuildContext context) {
-    var staticProvider = context.read<WriteArticleProvider>();
+    var staticProvider = context.read<EditArticleProvider>();
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         toolbarHeight: 56,
         title: Text(
-          'Write Your Article',
+          'Edit Your Article',
           style: context.textTheme.headlineMedium,
         ),
       ),
@@ -75,20 +78,23 @@ class _WriteArticlePage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: staticProvider.submitArticle,
+                      onPressed: staticProvider.editArticle,
                       style: ElevatedButton.styleFrom(
-                        surfaceTintColor: AppColors.primaryMedium,
-                        backgroundColor: AppColors.primaryMedium,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),),
-                        padding: const EdgeInsets.all(16)
+                          surfaceTintColor: AppColors.primaryMedium,
+                          backgroundColor: AppColors.primaryMedium,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          padding: const EdgeInsets.all(16)),
+                      child: Text(
+                        'Edit',
+                        style: context.textTheme.titleSmall?.copyWith(color: AppColors.white),
                       ),
-                      child: Text('Submit', style: context.textTheme.titleSmall?.copyWith(color: AppColors.white),),
                     ),
                   ),
                 ],
               ),
               const Gap(32),
-
             ],
           ),
         ),
