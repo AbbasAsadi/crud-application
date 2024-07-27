@@ -4,14 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeRoutes {
-  static const homePagePath = '/';
+  static const homePagePath = '/home';
+  static final GlobalKey<NavigatorState> _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'homeNav');
 
-  static RouteBase pageRoute = GoRoute(
-    path: homePagePath,
-    builder: (context, state) => const HomePage(),
-    routes: [
-      ArticleRoutes.pageRoute
-    ]
+  static StatefulShellBranch pageRoute = StatefulShellBranch(
+    navigatorKey: _homeNavigatorKey,
+    routes: <RouteBase>[
+      GoRoute(
+        path: homePagePath,
+        builder: (context, state) => const HomePage(),
+        routes: [ArticleRoutes.pageRoute],
+      ),
+    ],
   );
 
   static toHomePage(BuildContext context) {

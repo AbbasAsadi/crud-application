@@ -1,6 +1,7 @@
 import 'package:crud/gen/assets.gen.dart';
 import 'package:crud/src/components/api_response_handler_widget.dart';
 import 'package:crud/src/models/base/api_request_status.dart';
+import 'package:crud/src/modules/dashboard/dashboard_provider.dart';
 import 'package:crud/src/modules/home/_components/home_drawer.dart';
 import 'package:crud/src/modules/home/_components/home_successful_widget.dart';
 import 'package:crud/src/modules/home/home_provider.dart';
@@ -40,28 +41,33 @@ class _HomePage extends StatelessWidget {
         ],
       ),
       drawerEnableOpenDragGesture: true,
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Gap(8),
-            Selector<HomeProvider, ApiRequestStatus>(
-              selector: (_, provider) => provider.homeResponse.status,
-              builder: (_, status, __) {
-                return ApiResponseHandlerWidget(
-                  status: status,
-                  customSuccessWidget: HomeSuccessfulWidget(
-                    data: staticProvider.homeResponse.data,
-                    onRetryTapped: staticProvider.initialize,
-                    onArticleTapped: staticProvider.onArticleTapped,
-                  ),
-                  onRetryTapped: staticProvider.initialize,
-                );
-              },
-            ),
-            const Gap(32),
-          ],
+      body: Expanded(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Gap(8),
+              Expanded(
+                child: Selector<HomeProvider, ApiRequestStatus>(
+                  selector: (_, provider) => provider.homeResponse.status,
+                  builder: (_, status, __) {
+                    return ApiResponseHandlerWidget(
+                      status: status,
+                      customSuccessWidget: HomeSuccessfulWidget(
+                        data: staticProvider.homeResponse.data,
+                        yourArticles: context.read<DashboardProvider>().yourArticles,
+                        onRetryTapped: staticProvider.initialize,
+                        onArticleTapped: staticProvider.onArticleTapped,
+                      ),
+                      onRetryTapped: staticProvider.initialize,
+                    );
+                  },
+                ),
+              ),
+              const Gap(32),
+            ],
+          ),
         ),
       ),
     );

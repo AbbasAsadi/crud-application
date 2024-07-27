@@ -6,19 +6,40 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class HomeSuccessfulWidget extends StatelessWidget {
-  const HomeSuccessfulWidget({super.key, this.data, required this.onRetryTapped, required this.onArticleTapped});
+  const HomeSuccessfulWidget(
+      {super.key, this.data, required this.onRetryTapped, required this.onArticleTapped, required this.yourArticles});
 
   final List<ArticleResponse>? data;
+  final List<ArticleResponse> yourArticles;
   final VoidCallback onRetryTapped;
   final ValueSetter<ArticleResponse> onArticleTapped;
 
   @override
   Widget build(BuildContext context) {
-    if (data?.isNotEmpty ?? false) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (yourArticles.isNotEmpty) ...[
+          Text(
+            'Your Articles',
+            style: context.textTheme.titleLarge?.copyWith(color: AppColors.gray900),
+          ),
+          const Gap(16),
+          ListView.separated(
+            itemCount: yourArticles.length,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (context, index) => const Gap(8),
+            itemBuilder: (context, index) {
+              return ArticleListTile(
+                item: yourArticles[index],
+                onTap: onArticleTapped,
+              );
+            },
+          ),
+        ],
+        if (data?.isNotEmpty ?? false) ...[
           Text(
             'Last Articles',
             style: context.textTheme.titleLarge?.copyWith(color: AppColors.gray900),
@@ -37,20 +58,21 @@ class HomeSuccessfulWidget extends StatelessWidget {
             },
           ),
         ],
-      );
-    } else {
-      return Center(
-        child: Column(
-          children: [
-            const Text('No article found'),
-            const Gap(16),
-            OutlinedButton(
-              onPressed: onRetryTapped,
-              child: const Text('tryAgain'),
+        if (data?.isEmpty ?? true) ...[
+          Center(
+            child: Column(
+              children: [
+                const Text('No article found'),
+                const Gap(16),
+                OutlinedButton(
+                  onPressed: onRetryTapped,
+                  child: const Text('tryAgain'),
+                ),
+              ],
             ),
-          ],
-        ),
-      );
-    }
+          )
+        ],
+      ],
+    );
   }
 }

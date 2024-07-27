@@ -7,6 +7,14 @@ mixin AppTheme {
     brightness: Brightness.dark,
     colorSchemeSeed: AppColors.primaryMedium,
     scaffoldBackgroundColor: AppColors.white,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.white,
+      elevation: 3,
+      selectedItemColor: AppColors.primaryMedium,
+      unselectedItemColor: AppColors.gray25,
+      selectedLabelStyle: defaultTextTheme.bodySmall?.copyWith(color: AppColors.gray850),
+      unselectedLabelStyle: defaultTextTheme.bodySmall?.copyWith(color: AppColors.gray25),
+    ),
     appBarTheme: AppBarTheme(
       toolbarHeight: 48,
       iconTheme: const IconThemeData(color: AppColors.gray50),
