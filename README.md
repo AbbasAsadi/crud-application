@@ -1,7 +1,6 @@
-# crud
+# CRUD Article Application
 
-A Test CRUD Flutter project for Turf.
+## A Test CRUD Flutter project for Turff. ##
 
-![image](https://github.com/user-attachments/assets/91d74733-b4b2-49f7-9cb1-0c1ac55c2ed5)
 
-![image](https://github.com/user-attachments/assets/e694efc1-4b1b-4e1a-8a2a-67ad584d7243)
+![Modern Digital Product Mockup Pinterest Pin (2)](https://github.com/user-attachments/assets/284dee92-4662-4705-b61a-a403e8fe8ca4)
