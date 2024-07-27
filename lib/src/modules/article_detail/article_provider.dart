@@ -34,7 +34,7 @@ class ArticleProvider extends SafeProvider {
     if (writeCommentTextController.text.isNotEmpty) {
       commentList.add(
         CommentModel(
-          authorName: "You wrote",
+          authorName: "You Wrote",
           createTime: DateTime.now().formatDate,
           body: writeCommentTextController.text,
         ),

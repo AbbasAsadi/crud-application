@@ -142,29 +142,30 @@ class _ArticlePage extends StatelessWidget {
     return Selector<ArticleProvider, int>(
       selector: (_, provider) => provider.commentList.length,
       builder: (context, value, child) {
-        if (commentList.isNotEmpty) {
-          return ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: commentList.length,
-            separatorBuilder: (context, index) => const Column(
-              children: [
-                Gap(8),
-                Divider(
-                  color: AppColors.gray100,
-                ),
-                Gap(8),
-              ],
-            ),
-            itemBuilder: (context, index) {
-              return CommentListTile(
-                commentModel: commentList[index],
-              );
-            },
-          );
-        } else {
-          return const EmptyCommentState();
-        }
+        return Container(
+          constraints: BoxConstraints(minHeight: context.height * .3),
+          child: (commentList.isNotEmpty)
+              ? ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: commentList.length,
+                  separatorBuilder: (context, index) => const Column(
+                    children: [
+                      Gap(8),
+                      Divider(
+                        color: AppColors.gray100,
+                      ),
+                      Gap(8),
+                    ],
+                  ),
+                  itemBuilder: (context, index) {
+                    return CommentListTile(
+                      commentModel: commentList[index],
+                    );
+                  },
+                )
+              : const EmptyCommentState(),
+        );
       },
     );
   }
