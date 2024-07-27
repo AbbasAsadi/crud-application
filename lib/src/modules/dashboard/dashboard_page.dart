@@ -37,7 +37,7 @@ class _DashboardPage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        body: staticProvider.navigationShell,
+        body: Expanded(child: staticProvider.navigationShell),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           items: [

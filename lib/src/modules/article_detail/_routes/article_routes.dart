@@ -16,6 +16,6 @@ class ArticleRoutes {
   );
 
   static toArticlePage(BuildContext context, ArticleResponse article) {
-    context.go('${HomeRoutes.homePagePath}$_articlePagePath', extra: article);
+    context.go('${HomeRoutes.homePagePath}/$_articlePagePath', extra: article);
   }
 }

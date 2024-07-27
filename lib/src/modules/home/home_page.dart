@@ -41,33 +41,29 @@ class _HomePage extends StatelessWidget {
         ],
       ),
       drawerEnableOpenDragGesture: true,
-      body: Expanded(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Gap(8),
-              Expanded(
-                child: Selector<HomeProvider, ApiRequestStatus>(
-                  selector: (_, provider) => provider.homeResponse.status,
-                  builder: (_, status, __) {
-                    return ApiResponseHandlerWidget(
-                      status: status,
-                      customSuccessWidget: HomeSuccessfulWidget(
-                        data: staticProvider.homeResponse.data,
-                        yourArticles: context.read<DashboardProvider>().yourArticles,
-                        onRetryTapped: staticProvider.initialize,
-                        onArticleTapped: staticProvider.onArticleTapped,
-                      ),
-                      onRetryTapped: staticProvider.initialize,
-                    );
-                  },
-                ),
-              ),
-              const Gap(32),
-            ],
-          ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Gap(8),
+            Selector<HomeProvider, ApiRequestStatus>(
+              selector: (_, provider) => provider.homeResponse.status,
+              builder: (_, status, __) {
+                return ApiResponseHandlerWidget(
+                  status: status,
+                  customSuccessWidget: HomeSuccessfulWidget(
+                    data: staticProvider.homeResponse.data,
+                    yourArticles: context.read<DashboardProvider>().yourArticles,
+                    onRetryTapped: staticProvider.initialize,
+                    onArticleTapped: staticProvider.onArticleTapped,
+                  ),
+                  onRetryTapped: staticProvider.initialize,
+                );
+              },
+            ),
+            const Gap(32),
+          ],
         ),
       ),
     );

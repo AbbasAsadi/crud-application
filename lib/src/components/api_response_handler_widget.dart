@@ -63,13 +63,11 @@ class DefaultLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Center(
-        child: Image.asset(
-          Assets.images.loading.path,
-          color: AppColors.primaryMedium,
-          height: 32,
-        ),
+    return Center(
+      child: Image.asset(
+        Assets.images.loading.path,
+        color: AppColors.primaryMedium,
+        height: 32,
       ),
     );
   }
