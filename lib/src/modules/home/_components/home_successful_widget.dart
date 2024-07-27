@@ -7,10 +7,9 @@ import 'package:gap/gap.dart';
 
 class HomeSuccessfulWidget extends StatelessWidget {
   const HomeSuccessfulWidget(
-      {super.key, this.data, required this.onRetryTapped, required this.onArticleTapped, required this.yourArticles});
+      {super.key, this.data, required this.onRetryTapped, required this.onArticleTapped});
 
   final List<ArticleResponse>? data;
-  final List<ArticleResponse> yourArticles;
   final VoidCallback onRetryTapped;
   final ValueSetter<ArticleResponse> onArticleTapped;
 
@@ -20,25 +19,6 @@ class HomeSuccessfulWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (yourArticles.isNotEmpty) ...[
-          Text(
-            'Your Articles',
-            style: context.textTheme.titleLarge?.copyWith(color: AppColors.gray900),
-          ),
-          const Gap(16),
-          ListView.separated(
-            shrinkWrap: true,
-            itemCount: yourArticles.length,
-            physics: const NeverScrollableScrollPhysics(),
-            separatorBuilder: (context, index) => const Gap(8),
-            itemBuilder: (context, index) {
-              return ArticleListTile(
-                item: yourArticles[index],
-                onTap: onArticleTapped,
-              );
-            },
-          ),
-        ],
         if (data?.isNotEmpty ?? false) ...[
           Text(
             'Last Articles',

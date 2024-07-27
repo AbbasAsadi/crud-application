@@ -33,5 +33,5 @@ class AppColors {
 
 
   static const redError = Color(0xFFB00020);
-
+  static const successGreen = Color(0xFF12B000);
 }

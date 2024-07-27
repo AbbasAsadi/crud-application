@@ -26,36 +26,44 @@ mixin AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
         gapPadding: 16,
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: AppColors.gray400,
         ),
       ),
       enabledBorder:  OutlineInputBorder(
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(8),
         gapPadding: 16,
         borderSide: const BorderSide(
           color: AppColors.gray100,
         ),
       ),
       disabledBorder:  OutlineInputBorder(
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(8),
         gapPadding: 16,
         borderSide: const BorderSide(
           color: AppColors.gray100,
         ),
       ),
-      focusedErrorBorder:  OutlineInputBorder(
-        borderRadius: BorderRadius.circular(50),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
         gapPadding: 16,
         borderSide: const BorderSide(
-          color: AppColors.secondaryMedium,
+          color: AppColors.redError,
         ),
       ),
-      filled: false,
+      focusedErrorBorder:  OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        gapPadding: 16,
+        borderSide: const BorderSide(
+          color: AppColors.redError,
+        ),
+      ),
+      filled: true,
+      fillColor: AppColors.gray100,
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      labelStyle: defaultTextTheme.headlineMedium!.copyWith(color: AppColors.gray50),
-      errorStyle: defaultTextTheme.headlineMedium!.copyWith(color: AppColors.redError),
+      labelStyle: defaultTextTheme.bodyLarge!.copyWith(color: AppColors.gray50),
+      errorStyle: defaultTextTheme.bodyMedium!.copyWith(color: AppColors.redError),
       hintStyle: defaultTextTheme.bodyLarge!.copyWith(color: AppColors.gray50),
     ),
 

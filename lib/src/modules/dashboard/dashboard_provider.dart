@@ -6,5 +6,9 @@ class DashboardProvider extends SafeProvider {
 
   List<ArticleResponse> yourArticles = [];
 
+  void addArticle(ArticleResponse article) {
+    yourArticles.add(article);
+    notifyListeners();
+  }
 
 }

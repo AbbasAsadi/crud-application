@@ -17,11 +17,11 @@ class ArticleResponse {
     required this.releasedDate,
   });
 
-  static ArticleResponse fromBody(String item) {
+  static ArticleResponse fromBody(String body, {String? releaseDate, String? authorName }) {
     return ArticleResponse(
-      title: item.split(' ').sublist(0, 3).join(' '),
-      shortBody: '${item.split('.').sublist(0, 2).join('.')}.',
-      fullBody: item,
+      title: body.split(' ').sublist(0, 3).join(' '),
+      shortBody: '${body.split('.').sublist(0, 2).join('.')}.',
+      fullBody: body,
       author: RandomDataGenerator.getRandomAuthorName(),
       releasedDate: RandomDataGenerator.getRandomReleaseDate(),
     );

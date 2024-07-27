@@ -112,24 +112,22 @@ class _ArticlePage extends StatelessWidget {
             const Gap(16),
             getCommentList(staticProvider.commentList),
             const Gap(32),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                focusNode: staticProvider.writeCommentFocusNode,
-                controller: staticProvider.writeCommentTextController,
-                maxLines: 2,
-                minLines: 1,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                    hintText: 'write your comment here...',
-                    suffixIcon: TextButton(
-                      onPressed: staticProvider.sendComment,
-                      child: Text(
-                        'Send',
-                        style: context.textTheme.labelSmall?.copyWith(color: AppColors.primaryMedium),
-                      ),
-                    )),
+            TextField(
+              focusNode: staticProvider.writeCommentFocusNode,
+              controller: staticProvider.writeCommentTextController,
+              maxLines: 2,
+              minLines: 1,
+              keyboardType: TextInputType.multiline,
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                hintText: 'write your comment here...',
+                suffixIcon: TextButton(
+                  onPressed: staticProvider.sendComment,
+                  child: Text(
+                    'Send',
+                    style: context.textTheme.labelSmall?.copyWith(color: AppColors.primaryMedium),
+                  ),
+                ),
               ),
             ),
           ],
