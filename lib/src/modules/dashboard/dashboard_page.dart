@@ -14,32 +14,32 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => DashboardProvider(context, navigationShell),
-      child: const _DashboardPage(),
+      create: (_) => DashboardProvider(context),
+      child: _DashboardPage(navigationShell),
     );
   }
 }
 
 class _DashboardPage extends StatelessWidget {
-  const _DashboardPage();
+  const _DashboardPage(this.navigationShell);
+
+  final StatefulNavigationShell navigationShell;
 
   @override
   Widget build(BuildContext context) {
-    var staticProvider = context.read<DashboardProvider>();
-
     return BackButtonListener(
       onBackButtonPressed: () {
-        if (staticProvider.navigationShell.currentIndex != 0) {
-          staticProvider.onBottomNavBarItemTap(0);
+        if (navigationShell.currentIndex != 0) {
+          _onBottomNavBarItemTap(context, 0);
           return Future.value(true);
         } else {
           return Future.value(false);
         }
       },
       child: Scaffold(
-        body: staticProvider.navigationShell,
+        body: navigationShell,
         bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
+          // type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
               icon: Padding(
@@ -94,10 +94,26 @@ class _DashboardPage extends StatelessWidget {
                 ),
                 label: 'Manage Articles'),
           ],
-          currentIndex: staticProvider.navigationShell.currentIndex,
-          onTap: (int index) => staticProvider.onBottomNavBarItemTap(index),
+          currentIndex: navigationShell.currentIndex,
+          onTap: (int index) => _onBottomNavBarItemTap(context, index),
         ),
       ),
+    );
+  }
+
+  /// Navigate to the current location of the branch at the provided index when
+  /// tapping an item in the BottomNavigationBar.
+  void _onBottomNavBarItemTap(BuildContext context, int index) {
+    // When navigating to a new branch, it's recommended to use the goBranch
+    // method, as doing so makes sure the last navigation state of the
+    // Navigator for the branch is restored.
+    navigationShell.goBranch(
+      index,
+      // A common pattern when using bottom navigation bars is to support
+      // navigating to the initial location when tapping the item that is
+      // already active. This example demonstrates how to support this behavior,
+      // using the initialLocation parameter of goBranch.
+      initialLocation: index == navigationShell.currentIndex,
     );
   }
 }

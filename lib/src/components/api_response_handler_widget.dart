@@ -1,4 +1,5 @@
 import 'package:crud/gen/assets.gen.dart';
+import 'package:crud/src/helper/context_extensions.dart';
 import 'package:crud/src/models/base/api_request_status.dart';
 import 'package:crud/src/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,10 @@ class DefaultLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
+      alignment: Alignment.center,
+      height: context.height * .75,
+      width: context.width,
       child: Image.asset(
         Assets.images.loading.path,
         color: AppColors.primaryMedium,
