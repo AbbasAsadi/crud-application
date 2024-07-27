@@ -16,31 +16,39 @@ mixin AppTheme {
     ),
     textTheme: defaultTextTheme,
     inputDecorationTheme: InputDecorationTheme(
-      focusedBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: AppColors.primaryMedium,
+      focusedBorder: OutlineInputBorder(
+        gapPadding: 16,
+        borderRadius: BorderRadius.circular(50),
+        borderSide: const BorderSide(
+          color: AppColors.gray400,
         ),
       ),
-      enabledBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: AppColors.gray500,
+      enabledBorder:  OutlineInputBorder(
+        borderRadius: BorderRadius.circular(50),
+        gapPadding: 16,
+        borderSide: const BorderSide(
+          color: AppColors.gray100,
         ),
       ),
-      disabledBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: AppColors.gray500,
+      disabledBorder:  OutlineInputBorder(
+        borderRadius: BorderRadius.circular(50),
+        gapPadding: 16,
+        borderSide: const BorderSide(
+          color: AppColors.gray100,
         ),
       ),
-      focusedErrorBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(
+      focusedErrorBorder:  OutlineInputBorder(
+        borderRadius: BorderRadius.circular(50),
+        gapPadding: 16,
+        borderSide: const BorderSide(
           color: AppColors.secondaryMedium,
         ),
       ),
       filled: false,
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      labelStyle: defaultTextTheme.headlineMedium!.copyWith(color: AppColors.gray500),
+      labelStyle: defaultTextTheme.headlineMedium!.copyWith(color: AppColors.gray50),
       errorStyle: defaultTextTheme.headlineMedium!.copyWith(color: AppColors.redError),
-      hintStyle: defaultTextTheme.bodyLarge!.copyWith(color: AppColors.gray400),
+      hintStyle: defaultTextTheme.bodyLarge!.copyWith(color: AppColors.gray50),
     ),
 
   );

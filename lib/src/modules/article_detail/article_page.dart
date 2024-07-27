@@ -36,22 +36,25 @@ class _ArticlePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        toolbarHeight: 56,
         leading: IconButton(
           onPressed: () => context.pop(),
           icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
+            size: 16,
             color: AppColors.gray50,
           ),
         ),
         title: Text(
           'Article',
-          style: context.textTheme.bodyMedium,
+          style: context.textTheme.headlineMedium,
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Gap(16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
@@ -99,7 +102,7 @@ class _ArticlePage extends StatelessWidget {
               alignment: Alignment.center,
               decoration: const BoxDecoration(
                   border: Border.symmetric(
-                horizontal: BorderSide(color: AppColors.gray100),
+                horizontal: BorderSide(color: AppColors.gray200, width: 1.2),
               )),
               child: Text(
                 'Comments',
@@ -109,6 +112,26 @@ class _ArticlePage extends StatelessWidget {
             const Gap(16),
             getCommentList(staticProvider.commentList),
             const Gap(32),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                focusNode: staticProvider.writeCommentFocusNode,
+                controller: staticProvider.writeCommentTextController,
+                maxLines: 2,
+                minLines: 1,
+                keyboardType: TextInputType.multiline,
+                decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                    hintText: 'write your comment here...',
+                    suffixIcon: TextButton(
+                      onPressed: staticProvider.sendComment,
+                      child: Text(
+                        'Send',
+                        style: context.textTheme.labelSmall?.copyWith(color: AppColors.primaryMedium),
+                      ),
+                    )),
+              ),
+            ),
           ],
         ),
       ),
@@ -116,21 +139,33 @@ class _ArticlePage extends StatelessWidget {
   }
 
   Widget getCommentList(List<CommentModel> commentList) {
-    if (commentList.isNotEmpty) {
-      return ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: commentList.length,
-        separatorBuilder: (context, index) => const Gap(16),
-        itemBuilder: (context, index) {
-          return CommentListTile(
-            commentModel: commentList[index],
+    return Selector<ArticleProvider, int>(
+      selector: (_, provider) => provider.commentList.length,
+      builder: (context, value, child) {
+        if (commentList.isNotEmpty) {
+          return ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: commentList.length,
+            separatorBuilder: (context, index) => const Column(
+              children: [
+                Gap(8),
+                Divider(
+                  color: AppColors.gray100,
+                ),
+                Gap(8),
+              ],
+            ),
+            itemBuilder: (context, index) {
+              return CommentListTile(
+                commentModel: commentList[index],
+              );
+            },
           );
-        },
-      );
-    } else {
-      return const EmptyCommentState();
-    }
+        } else {
+          return const EmptyCommentState();
+        }
+      },
+    );
   }
 }

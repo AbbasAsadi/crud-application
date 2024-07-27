@@ -2,6 +2,7 @@ import 'package:crud/src/core/provider/safe_provider.dart';
 import 'package:crud/src/helper/date_extensions.dart';
 import 'package:crud/src/helper/random_data_generator.dart';
 import 'package:crud/src/modules/article_detail/_model/entity/comment_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ArticleProvider extends SafeProvider {
@@ -17,26 +18,31 @@ class ArticleProvider extends SafeProvider {
       body: 'very useful',
     ),
   ];
-  final TextEditingController commentTextController = TextEditingController();
-  final FocusNode commentFocusNode = FocusNode();
+
+  final FocusNode writeCommentFocusNode = FocusNode();
+  final TextEditingController writeCommentTextController = TextEditingController();
 
   ArticleProvider(super.context);
 
   @override
   void dispose() {
-    commentTextController.dispose();
-    commentFocusNode.dispose();
+    writeCommentFocusNode.dispose();
+    writeCommentTextController.dispose();
     super.dispose();
   }
 
-  void addItemToCommentList() {
-    commentList.add(
-      CommentModel(
-        authorName: RandomDataGenerator.getRandomAuthorName(),
-        createTime: DateTime.now().formatDate,
-        body: commentTextController.text,
-      ),
-    );
-    notifyListeners();
+  void sendComment() {
+    if (writeCommentTextController.text.isNotEmpty) {
+      commentList.add(
+        CommentModel(
+          authorName: "You wrote",
+          createTime: DateTime.now().formatDate,
+          body: writeCommentTextController.text,
+        ),
+      );
+      writeCommentTextController.clear();
+      writeCommentFocusNode.unfocus();
+      notifyListeners();
+    }
   }
 }

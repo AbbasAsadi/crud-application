@@ -16,6 +16,7 @@ class CommentListTile extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const Gap(16),
         SvgPicture.asset(
           Assets.icons.userCircle,
         ),
@@ -47,26 +48,25 @@ class CommentListTile extends StatelessWidget {
               style: context.textTheme.bodyMedium?.copyWith(color: AppColors.gray800),
             ),
             const Gap(8),
-            IconButton(
-              onPressed: () {
-
-              },
-              icon: Row(
-                children: [
-                  SvgPicture.asset(
-                    Assets.icons.reply,
-                    color: AppColors.primaryMedium,
-                  ),
-                  const Gap(8),
-                  Text(
-                    'Reply',
-                    style: context.textTheme.bodyMedium?.copyWith(color: AppColors.primaryMedium),
-                  )
-                ],
-              ),
-            )
+            if (commentModel.authorName != 'You Wrote')
+              IconButton(
+                onPressed: () {},
+                icon: Row(
+                  children: [
+                    SvgPicture.asset(
+                      Assets.icons.reply,
+                    ),
+                    const Gap(8),
+                    Text(
+                      'Reply',
+                      style: context.textTheme.bodyMedium?.copyWith(color: AppColors.primaryMedium),
+                    )
+                  ],
+                ),
+              )
           ],
         ),
+        const Gap(16),
       ],
     );
   }
