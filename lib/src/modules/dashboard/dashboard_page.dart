@@ -30,14 +30,14 @@ class _DashboardPage extends StatelessWidget {
     return BackButtonListener(
       onBackButtonPressed: () {
         if (staticProvider.navigationShell.currentIndex != 0) {
-          staticProvider.onBottomNavBarItemTap(0, staticProvider.navigationShell);
+          staticProvider.onBottomNavBarItemTap(0);
           return Future.value(true);
         } else {
           return Future.value(false);
         }
       },
       child: Scaffold(
-        body: Expanded(child: staticProvider.navigationShell),
+        body: staticProvider.navigationShell,
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           items: [
@@ -95,7 +95,7 @@ class _DashboardPage extends StatelessWidget {
                 label: 'Manage Articles'),
           ],
           currentIndex: staticProvider.navigationShell.currentIndex,
-          onTap: (int index) => staticProvider.onBottomNavBarItemTap(index, staticProvider.navigationShell),
+          onTap: (int index) => staticProvider.onBottomNavBarItemTap(index),
         ),
       ),
     );

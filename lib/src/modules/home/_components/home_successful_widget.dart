@@ -27,8 +27,8 @@ class HomeSuccessfulWidget extends StatelessWidget {
           ),
           const Gap(16),
           ListView.separated(
-            itemCount: yourArticles.length,
             shrinkWrap: true,
+            itemCount: yourArticles.length,
             physics: const NeverScrollableScrollPhysics(),
             separatorBuilder: (context, index) => const Gap(8),
             itemBuilder: (context, index) {

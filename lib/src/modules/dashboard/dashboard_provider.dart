@@ -6,13 +6,16 @@ class DashboardProvider extends SafeProvider {
   DashboardProvider(super.context, this.navigationShell);
 
   List<ArticleResponse> yourArticles = [];
-  StatefulNavigationShell navigationShell;
+  final StatefulNavigationShell navigationShell;
+
   /// Navigate to the current location of the branch at the provided index when
   /// tapping an item in the BottomNavigationBar.
-  void onBottomNavBarItemTap(int index, StatefulNavigationShell navigationShell) {
+  void onBottomNavBarItemTap(int index) {
     navigationShell.goBranch(
       index,
       initialLocation: index == navigationShell.currentIndex,
     );
   }
+
+
 }

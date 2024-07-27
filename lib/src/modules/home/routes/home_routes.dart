@@ -9,6 +9,7 @@ class HomeRoutes {
 
   static StatefulShellBranch pageRoute = StatefulShellBranch(
     navigatorKey: _homeNavigatorKey,
+    initialLocation: homePagePath,
     routes: <RouteBase>[
       GoRoute(
         path: homePagePath,

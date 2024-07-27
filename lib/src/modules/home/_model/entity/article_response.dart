@@ -1,4 +1,5 @@
 import 'package:crud/src/helper/random_data_generator.dart';
+import 'package:crud/src/modules/article_detail/_model/entity/comment_model.dart';
 
 class ArticleResponse {
   final String title;
@@ -6,6 +7,7 @@ class ArticleResponse {
   final String fullBody;
   final String author;
   final String releasedDate;
+  List<CommentModel> comments = [];
 
   ArticleResponse({
     required this.title,
