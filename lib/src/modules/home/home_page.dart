@@ -1,11 +1,9 @@
 import 'package:crud/gen/assets.gen.dart';
 import 'package:crud/src/components/api_response_handler_widget.dart';
-import 'package:crud/src/helper/context_extensions.dart';
 import 'package:crud/src/models/base/api_request_status.dart';
 import 'package:crud/src/modules/home/_components/home_drawer.dart';
 import 'package:crud/src/modules/home/_components/home_successful_widget.dart';
 import 'package:crud/src/modules/home/home_provider.dart';
-import 'package:crud/src/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -42,17 +40,12 @@ class _HomePage extends StatelessWidget {
         ],
       ),
       drawerEnableOpenDragGesture: true,
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Gap(8),
-            Text(
-              'Last Articles',
-              style: context.textTheme.titleLarge?.copyWith(color: AppColors.gray900),
-            ),
-            const Gap(16),
             Selector<HomeProvider, ApiRequestStatus>(
               selector: (_, provider) => provider.homeResponse.status,
               builder: (_, status, __) {

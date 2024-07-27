@@ -10,14 +10,14 @@ class EmptyCommentState extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Gap(24),
+        const Gap(100),
         Center(
           child: Text(
             "You don't have any comment yet!",
             style: context.textTheme.headlineSmall?.copyWith(color: AppColors.gray50),
           ),
         ),
-        const Gap(8),
+        const Gap(100),
       ],
     );
   }
