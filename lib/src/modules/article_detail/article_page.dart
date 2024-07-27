@@ -50,88 +50,96 @@ class _ArticlePage extends StatelessWidget {
           style: context.textTheme.headlineMedium,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Gap(16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                article.title,
-                style: context.textTheme.titleLarge?.copyWith(color: AppColors.gray900),
-              ),
-            ),
-            const Gap(8),
-            Row(
-              children: [
-                const Gap(16),
-                Text(
-                  article.author,
-                  style: context.textTheme.bodyMedium?.copyWith(color: AppColors.gray50),
-                ),
-                const Gap(8),
-                Container(
-                  height: 4,
-                  width: 4,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.primaryMedium,
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Gap(16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      article.title,
+                      style: context.textTheme.titleLarge?.copyWith(color: AppColors.gray900),
+                    ),
                   ),
-                ),
-                const Gap(8),
-                Text(
-                  article.releasedDate,
-                  style: context.textTheme.bodyMedium?.copyWith(color: AppColors.gray50),
-                ),
-                const Gap(16),
-              ],
-            ),
-            const Gap(16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                article.fullBody,
-                textAlign: TextAlign.justify,
-                style: context.textTheme.headlineMedium?.copyWith(color: AppColors.gray800),
-              ),
-            ),
-            const Gap(40),
-            Container(
-              padding: const EdgeInsets.all(16),
-              alignment: Alignment.center,
-              decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                horizontal: BorderSide(color: AppColors.gray200, width: 1.2),
-              )),
-              child: Text(
-                'Comments',
-                style: context.textTheme.labelSmall?.copyWith(color: AppColors.primaryMedium),
-              ),
-            ),
-            const Gap(16),
-            getCommentList(staticProvider.commentList),
-            const Gap(32),
-            TextField(
-              focusNode: staticProvider.writeCommentFocusNode,
-              controller: staticProvider.writeCommentTextController,
-              maxLines: 2,
-              minLines: 1,
-              keyboardType: TextInputType.multiline,
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                hintText: 'write your comment here...',
-                suffixIcon: TextButton(
-                  onPressed: staticProvider.sendComment,
-                  child: Text(
-                    'Send',
-                    style: context.textTheme.labelSmall?.copyWith(color: AppColors.primaryMedium),
+                  const Gap(8),
+                  Row(
+                    children: [
+                      const Gap(16),
+                      Text(
+                        article.author,
+                        style: context.textTheme.bodyMedium?.copyWith(color: AppColors.gray50),
+                      ),
+                      const Gap(8),
+                      Container(
+                        height: 4,
+                        width: 4,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.primaryMedium,
+                        ),
+                      ),
+                      const Gap(8),
+                      Text(
+                        article.releasedDate,
+                        style: context.textTheme.bodyMedium?.copyWith(color: AppColors.gray50),
+                      ),
+                      const Gap(16),
+                    ],
                   ),
+                  const Gap(16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      article.fullBody,
+                      textAlign: TextAlign.justify,
+                      style: context.textTheme.headlineMedium?.copyWith(color: AppColors.gray800),
+                    ),
+                  ),
+                  const Gap(40),
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                        border: Border.symmetric(
+                      horizontal: BorderSide(color: AppColors.gray200, width: 1.2),
+                    )),
+                    child: Text(
+                      'Comments',
+                      style: context.textTheme.labelSmall?.copyWith(color: AppColors.primaryMedium),
+                    ),
+                  ),
+                  const Gap(16),
+                  getCommentList(staticProvider.commentList),
+                  const Gap(32),
+                ],
+              ),
+            ),
+          ),
+          const Gap(16),
+          TextField(
+            focusNode: staticProvider.writeCommentFocusNode,
+            controller: staticProvider.writeCommentTextController,
+            maxLines: 2,
+            minLines: 1,
+            keyboardType: TextInputType.multiline,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              hintText: 'write your comment here...',
+              suffixIcon: TextButton(
+                onPressed: staticProvider.sendComment,
+                child: Text(
+                  'Send',
+                  style: context.textTheme.labelSmall?.copyWith(color: AppColors.primaryMedium),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+
+        ],
       ),
     );
   }
