@@ -1,11 +1,12 @@
 import 'package:crud/src/core/provider/safe_provider.dart';
 import 'package:crud/src/helper/date_extensions.dart';
+import 'package:crud/src/helper/random_data_generator.dart';
 import 'package:crud/src/modules/article_detail/_model/entity/comment_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ArticleProvider extends SafeProvider {
-  List<CommentModel> commentList = [/*
+  List<CommentModel> commentList = [
     CommentModel(
       authorName: RandomDataGenerator.getRandomAuthorName(),
       createTime: RandomDataGenerator.getRandomReleaseDate(),
@@ -15,7 +16,7 @@ class ArticleProvider extends SafeProvider {
       authorName: RandomDataGenerator.getRandomAuthorName(),
       createTime: RandomDataGenerator.getRandomReleaseDate(),
       body: 'very useful',
-    ),*/
+    ),
   ];
 
   final FocusNode writeCommentFocusNode = FocusNode();

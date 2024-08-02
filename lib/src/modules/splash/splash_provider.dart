@@ -1,5 +1,5 @@
 import 'package:crud/src/core/provider/safe_provider.dart';
-import 'package:crud/src/modules/home/routes/home_routes.dart';
+import 'package:crud/src/modules/home/_routes/home_routes.dart';
 
 class SplashProvider extends SafeProvider {
   SplashProvider(super.context) {

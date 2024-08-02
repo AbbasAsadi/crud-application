@@ -1,6 +1,6 @@
 import 'package:crud/gen/assets.gen.dart';
 import 'package:crud/src/helper/context_extensions.dart';
-import 'package:crud/src/modules/splash/routes/splash_provider.dart';
+import 'package:crud/src/modules/splash/splash_provider.dart';
 import 'package:crud/src/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
